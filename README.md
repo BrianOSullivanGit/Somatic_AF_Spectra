@@ -42,10 +42,10 @@ cd <path to your install>/FRAMEWORK/stochasticSim/toyExample
 ./run.bash 50 chr19_500KB.bed
 ```
 
-### Set-up reference directory.
+### Set-up Reference directory.
 Before running the simulations you will need to set up the Somatic_AF_Spectra/Reference directory. This consists of downloading/creating a set of reference files that are required by the simulations. 
 
-Please note that if you have a previously downloaded / indexed version of any of these reference files you may copy / create a link to it here to save time/bandwidth (directory contents shown at the end of this section). The first step in setting up the Reference directory is to download the version of the Mutect2 panel-of-normals (PON) used in these simulations. This is a controlled file located on the GDC repository. You will need a GDC token and access to the gdc-client tool to download it. See the following link about how to get token based access to GDC controlled data (https://gdc.cancer.gov/access-data/obtaining-access-controlled-data) and https://gdc.cancer.gov/node/159 to download a copy of the gdc-client for your platform. In the example below we use a Ubuntu x64 client.
+The first step in setting up the Reference directory is to download the version of the Mutect2 panel-of-normals (PON) used in these simulations. This is a controlled file located on the GDC repository. You will need a GDC token and access to the gdc-client tool to download it. See the following link about how to get token based access to GDC controlled data (https://gdc.cancer.gov/access-data/obtaining-access-controlled-data) and https://gdc.cancer.gov/node/159 to download a copy of the gdc-client for your platform. In the example below we use a Ubuntu x64 client.
 Once it's downloaded, unpack the PON VCF and the corresponding index file to the Somatic_AF_Spectra/Reference directory (as shown below).
 
 ```
@@ -67,6 +67,7 @@ to simulate phased, perfectly aligned, normal and pre-tumour (i.e., before the s
 ```
 ./setup.bash
 ```
+Please note that if you have already downloaded / indexed any of these reference files previously you may copy / create a link to them here to save time/bandwidth (directory contents shown at the end of this section). You may in that case edit setup.bash to skip any redundant steps in setting up the Reference directory.
 
 ## Create base BAM pairs
 
