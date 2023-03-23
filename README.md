@@ -5,6 +5,9 @@ Contact BrianOSullivan@yahoo.com with questions.
 
 ## Table of contents<!-- omit in toc -->
 - [Simulation set-up.](#simulation-set-up)
+- [Create base BAM pairs.](#create-base-bam-pairs)
+- [Run the simulations.](#run-the-simulations)
+
 
 
 ## Simulation set-up.
@@ -65,6 +68,37 @@ to simulate phased, perfectly aligned, normal and pre-tumour (i.e., before the s
 ./setup.bash
 ```
 
-### Run the simulations
-These simulations were run on a linux based cluster running the Slurm Workload Manager. A script to submit the jobs to the slurm scheduler is located under Somatic_AF_Spectra/Sims/run.slurm . You may need to modify it to run on your cluster depending on your scheduler / the nodes & resources available to you e.t.c..
+## Create base BAM pairs
+
+In this step we use the read simulator (in this case, ART) to create pre-tumour and normal phased BAMs at each of the required depths of coverage. The pre-tumour BAMs will be used as a base to spike-in the required somatic distributions when we run the simulations (in the next step). The normal phased BAM pair for each depth of coverage is realigned against the standard reference and merged creating a normal (control) BAM which will be used during somatic variant calling (the last stage in running the simulation). Slurm scheduler commands are used to submit the required jobs in the example below. Modify as required to fit your scheduler / node & resource availability.
+
+### 100x
+```
+cd <path to your install>/Somatic_AF_Spectra/BaseBamTnPairs/100x
+sbatch -c8 --job-name=100xPhasedBase --mem-per-cpu=7750 ./run.bash
+```
+### 200x
+```
+cd <path to your install>/Somatic_AF_Spectra/BaseBamTnPairs/200x
+sbatch -c8 --job-name=200xPhasedBase --mem-per-cpu=7750 ./run.bash
+```
+### 350x
+```
+cd <path to your install>/Somatic_AF_Spectra/BaseBamTnPairs/350x
+sbatch -c8 --job-name=350xPhasedBase --mem-per-cpu=7750 ./run.bash
+```
+### 600x
+```
+cd <path to your install>/Somatic_AF_Spectra/BaseBamTnPairs/600x
+sbatch -c8 --job-name=600xPhasedBase --mem-per-cpu=7750 ./run.bash
+```
+
+## Create Somatic Distribution config files
+```
+cd <path to your install>/Somatic_AF_Spectra/SomaticAlleleSpectra
+./createSomaticDistributionCfgs.sh
+```
+
+## Run the simulations
+Once the base BAM pairs and required somatic distribution config files have been created you may now run the simulations. These simulations were run on a linux based cluster running the Slurm Workload Manager. A script to submit the jobs to the slurm scheduler is located under Somatic_AF_Spectra/Sims/run.slurm . You may need to modify it to run on your cluster depending on your scheduler / the nodes & resources available to you cluster e.t.c..
 
