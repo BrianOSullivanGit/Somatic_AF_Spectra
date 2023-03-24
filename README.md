@@ -1,7 +1,7 @@
 # Somatic_AF_Spectra
 *Simulation details and output associated with the manuscript "Comprehensive and realistic simulation of tumour genomic sequencing data".*
 
-Contact BrianOSullivan@yahoo.com with questions.
+To run, please follow the instructions below. Contact BrianOSullivan@yahoo.com with questions.
 
 ## Table of contents<!-- omit in toc -->
 - [If you are in a hurry..](#if-you-are-in-a-hurry)
