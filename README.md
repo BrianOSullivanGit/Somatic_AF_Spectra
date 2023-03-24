@@ -4,13 +4,23 @@
 Contact BrianOSullivan@yahoo.com with questions.
 
 ## Table of contents<!-- omit in toc -->
-- [Simulation set-up.](#simulation-set-up)
+- [If you are in a hurry..](if-you-are-in-a-hurry)
+- [Set up framework and reference files.](#set-up-framework-and-reference-files)
 - [Create base BAM pairs.](#create-base-bam-pairs)
+- [Create Somatic Distribution config files.](create-somatic-distribution-config-files)
 - [Run the simulations.](#run-the-simulations)
+- [Run analyses.](#run-analyses)
 
 
+## If you are in a hurry..
+This repository includes a tarball of VCFs and other output files created by a previous run of these simulations. If you wish to skip setting up and running these simulations, untar that file (below). It will populate all the required output directories allowing you to skip ahead to the final step 'Run analyses'. If not then ignore this step in the process.
 
-## Simulation set-up.
+```
+cd <path to your install>/Somatic_AF_Spectra/
+tar xvf sample.output.tgz
+```
+
+## Set up framework and reference files.
 
 ### Clone the Somatic_AF_Spectra repository
 
@@ -45,7 +55,7 @@ cd <path to your install>/FRAMEWORK/stochasticSim/toyExample
 ### Set-up Reference directory.
 Before running the simulations you will need to set up the Somatic_AF_Spectra/Reference directory. This consists of downloading/creating a set of reference files that are required by the simulations. 
 
-The first step in setting up the Reference directory is to download the version of the Mutect2 panel-of-normals (PON) used in these simulations. This is a controlled file located on the GDC repository. You will need a GDC token and access to the gdc-client tool to download it. See the following link about how to get token based access to GDC controlled data (https://gdc.cancer.gov/access-data/obtaining-access-controlled-data) and https://gdc.cancer.gov/node/159 to download a copy of the gdc-client for your platform. In the example below we use a Ubuntu x64 client.
+The first step in setting up the Reference directory is to download the version of the Mutect2 panel-of-normals (PON) used in these simulations. This is a controlled file located on the GDC repository. You will need a GDC token and access to the gdc-client tool to download it. See [this link](https://gdc.cancer.gov/access-data/obtaining-access-controlled-data) to find out how to get token based access to GDC controlled data and [this link](https://gdc.cancer.gov/node/159) to download a copy of the gdc-client for your platform. In the example below we use a Ubuntu x64 client.
 Once it's downloaded, unpack the PON VCF and the corresponding index file to the Somatic_AF_Spectra/Reference directory (as shown below).
 
 ```
@@ -126,7 +136,11 @@ cd <path to your install>/Somatic_AF_Spectra/Sims
 source ./run.slurm
 ```
 
-## Run analysis
-When the simulations have completed you may now run the analysis which is located in the plots directory.
+## Run analyses.
+When the simulations have completed you may run the analyses located in the plots directory. Again you must have R installed with the Rscript binary located under /usr/bin/Rscript to run these analyses. You can run them individually or alternatively call run.bash which runs them all sequentially. The resulting plots are located in the output directory. After the plots have been created, the neutral_summary.bash creates a summary table of the neutral subclonal simulations. Please refer to the corresponding section in the manuscript for further information about each of these plots. 
+```
+cd <path to your install>/Somatic_AF_Spectra/Plots
+./run.bash
+```
 
 
