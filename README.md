@@ -95,11 +95,38 @@ sbatch -c8 --job-name=600xPhasedBase --mem-per-cpu=7750 ./run.bash
 ```
 
 ## Create Somatic Distribution config files
+The list of somatic mutations used in each simulation is located under the Somatic_AF_Spectra/SomaticAlleleSpectra directory.
+These lists are stored in a set of spike-in configuration files in the output directory and used by the simulations. The R script createSomaticDistributionCfgs.R creates the frequency distribution for each simulation and the bash script createSomaticDistributionCfgs.bash matches each SNVs frequency with a random genomic location creating the required set of spike-in config files in the output directory. Refer to the file createSomaticDistributionCfgs.R and the manuscript associated with these simulations for more details on these distributions. The R script createSomaticDistributionCfgs.R is called at the start of the bash script createSomaticDistributionCfgs.bash. You will need to have R installed to run this script. Run it as shown below. If R is not installed on the node, go to one where it is installed and run the R script separately first before running the bash script.
+
 ```
 cd <path to your install>/Somatic_AF_Spectra/SomaticAlleleSpectra
-./createSomaticDistributionCfgs.sh
+./createSomaticDistributionCfgs.bash
 ```
 
 ## Run the simulations
-Once the base BAM pairs and required somatic distribution config files have been created you may now run the simulations. These simulations were run on a linux based cluster running the Slurm Workload Manager. A script to submit the jobs to the slurm scheduler is located under Somatic_AF_Spectra/Sims/run.slurm . You may need to modify it to run on your cluster depending on your scheduler / the nodes & resources available to you cluster e.t.c..
+Once the base BAM pairs and required somatic distribution config files have been created you may now run the simulations. Before running the simulations you will need to run a script to set up the Sims directory. This creates a set of directories that will contain simulation output together with a series of run scripts that will be submitted to the scheduler to run each individual simulation. Setup the Sims directory with,
+
+```
+cd <path to your install>/Somatic_AF_Spectra/Sims
+./setup.bash
+```
+
+Once setup has completed you may run the simulations by sourcing run.slurm which contains the necessary commands to submit the simulation jobs, as shown below. These simulations were run on a linux based cluster running the Slurm Workload Manager. You may need to modify run.slurm for your cluster depending on your scheduler / the nodes & resources available on your cluster e.t.c.. Also, depending on the resources available to you you may wish to stagger the jobs to limit the load on the cluster. Either way it is probably best to more the run.slurm file and run one 100x job first to make sure your setup is working ok.
+```
+cd <path to your install>/Somatic_AF_Spectra/Sims
+
+# Advisable, more run.slurm and run one 100x job to completion first.
+# ie.,
+#
+# cd ../../
+# cd neutral_8.51/100x
+# sbatch -c8 --job-name=neutral_8.51 --mem-per-cpu=7750 run.bash
+
+# Alternatively, if you want to set all jobs going,
+source ./run.slurm
+```
+
+## Run analysis
+When the simulations have completed you may now run the analysis which is located in the plots directory.
+
 
