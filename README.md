@@ -4,7 +4,7 @@
 Contact BrianOSullivan@yahoo.com with questions.
 
 ## Table of contents<!-- omit in toc -->
-- [If you are in a hurry..](if-you-are-in-a-hurry)
+- [If you are in a hurry..](#if-you-are-in-a-hurry)
 - [Set up framework and reference files.](#set-up-framework-and-reference-files)
 - [Create base BAM pairs.](#create-base-bam-pairs)
 - [Create Somatic Distribution config files.](create-somatic-distribution-config-files)
