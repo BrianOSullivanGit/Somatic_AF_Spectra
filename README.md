@@ -53,6 +53,10 @@ source <path to your install>/FRAMEWORK/stochasticSim/bin/tool.path
 cd <path to your install>/FRAMEWORK/stochasticSim/toyExample
 ./run.bash 50 chr19_500KB.bed
 ```
+All simulations in this repository use a specific set of tools located in the FRAMEWORK directory. Before running any of the simulations that follow you will need to source the tool.path file so that the scripts that run the simulations can pick up the path to these tools. Once stochasticSim is installed, and before any simulation run, always source this file as follows,
+```
+source <path to your install>/FRAMEWORK/stochasticSim/bin/tool.path
+```
 
 ### Set-up Reference directory.
 Before running the simulations you will need to set up the Somatic_AF_Spectra/Reference directory. This consists of downloading/creating a set of reference files that are required by the simulations. 
