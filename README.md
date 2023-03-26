@@ -13,7 +13,7 @@ To run, please follow the instructions below. Contact BrianOSullivan@yahoo.com w
 
 
 ## If you are in a hurry..
-There is a link below to a tarball of VCFs and other output files created by a previous run of these simulations. If you wish to skip setting up and running these simulations, download and untar that file (below). It will populate all the required output directories allowing you to skip ahead to the final step 'Run analyses'. If not then ignore this step and proceed through the process.
+The target sizes and depths of these simulations are non-trivial. As a result some of the steps detailed here take a significant amount of time to run to completion. Spiking-in a somatic distribution to a phased BAM pair takes about 30 mins, however creating phased 600x, exome, tumour & normal base BAM files with a read simulator can take over 48 hours to run. The same base BAM files, once created, can be reused in all simulations, however, realigning the data against the standard hg38 reference and running Mutect2 will also take several hours. There is a link below to a tarball of VCFs and other output files created by a previous run of these simulations. If you wish to skip setting up and running these simulations, download and untar that file (below). It will populate all the required output directories allowing you to skip ahead to the final step 'Run analyses'. If not then ignore this step and proceed through the process.
 
 ```
 git clone  https://github.com/BrianOSullivanGit/Somatic_AF_Spectra
