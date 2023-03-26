@@ -13,11 +13,13 @@ To run, please follow the instructions below. Contact BrianOSullivan@yahoo.com w
 
 
 ## If you are in a hurry..
-This repository includes a tarball of VCFs and other output files created by a previous run of these simulations. If you wish to skip setting up and running these simulations, untar that file (below). It will populate all the required output directories allowing you to skip ahead to the final step 'Run analyses'. If not then ignore this step in the process.
+There is a link below to a tarball of VCFs and other output files created by a previous run of these simulations. If you wish to skip setting up and running these simulations, download and untar that file (below). It will populate all the required output directories allowing you to skip ahead to the final step 'Run analyses'. If not then ignore this step and proceed through the process.
 
 ```
+git clone  https://github.com/BrianOSullivanGit/Somatic_AF_Spectra
 cd <path to your install>/Somatic_AF_Spectra/
-tar xvf sample.output.tgz
+wget https://www.dropbox.com/s/4ewotu5j88mktgb/Somatic_AF_Spectra.output.tgz?dl=0
+tar xvf Somatic_AF_Spectra.output.tgz
 ```
 
 ## Set up framework and reference files.
@@ -71,8 +73,7 @@ cd ../
 rm -fr 726e24c0-d2f2-41a8-9435-f85f22e1c832
 ```
 
-Now run setup.bash script located in the Reference directory. This will download the GRCh38 reference genome and associated index files. It will also unpack the target BED and germline donor VCF. Finally it uses the stochasticSim framework to create a phased donor genome for use in the simulations. This personalised reference genome will contain all germline SNVs and indels annotated for 1000 genomes donor HG00110 (female of English and Scottish ancestry). We will use it in our simulations as a base 
-to simulate phased, perfectly aligned, normal and pre-tumour (i.e., before the somatic variants have been spiked in) genomic sequencing data.
+Now run setup.bash script located in the Reference directory. This will download the GRCh38 reference genome and associated index files. It will also unpack the target BED and germline donor VCF. Finally it uses the stochasticSim framework to create a phased donor genome for use in the simulations. This personalised reference genome will contain all germline SNVs and indels annotated for 1000 genomes donor HG00110 (female of English and Scottish ancestry). We will use it to simulate phased, perfectly aligned, normal and pre-tumour (i.e., before the somatic variants have been spiked in) genomic sequencing data. The pre-tumour BAM will in turn be used as a base to spike-in the somatic distribution of interest, after which each set will be realigned against the standard reference, merged and used as input to somatic variant calling.
 
 ```
 ./setup.bash
@@ -81,7 +82,7 @@ Please note that if you have already downloaded / indexed any of these reference
 
 ## Create base BAM pairs
 
-In this step we use the read simulator (in this case, ART) to create pre-tumour and normal phased BAMs at each of the required depths of coverage. The pre-tumour BAMs will be used as a base to spike-in the required somatic distributions when we run the simulations (in the next step). The normal phased BAM pair for each depth of coverage is realigned against the standard reference and merged creating a normal (control) BAM which will be used during somatic variant calling (the last stage in running the simulation). Slurm scheduler commands are used to submit the required jobs in the example below. Modify as required to fit your scheduler / node & resource availability.
+In this step we use the read simulator (in this instance, ART) to create pre-tumour and normal phased BAMs at each of the required depths of coverage. The pre-tumour BAMs will be used as a base to spike-in the required somatic distributions when we run the simulations (below). The normal phased BAM pair for each depth of coverage is realigned against the standard reference and merged creating a normal (control) BAM which will be used during somatic variant calling (the last stage in running the simulation). Slurm scheduler commands are used to submit the required jobs in the example below. Modify as required to fit your scheduler / node & resource availability.
 
 ### 100x
 ```
