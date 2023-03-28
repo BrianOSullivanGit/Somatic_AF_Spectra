@@ -1,4 +1,6 @@
 #!/bin/bash
+
+mkdir output 2>/dev/null
 ./neutral_fig2B.bash
 ./neutral_fig3.R
 # ./neutral_summary.bash
