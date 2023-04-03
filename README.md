@@ -35,6 +35,7 @@ git clone  https://github.com/BrianOSullivanGit/Somatic_AF_Spectra
 Enter the Somatic_AF_Spectra/FRAMEWORK directory. Clone and build the stochasticSim repository that will drive these simulations.
 
 ```
+mkdir Somatic_AF_Spectra/FRAMEWORK
 cd Somatic_AF_Spectra/FRAMEWORK
 git clone https://github.com/BrianOSullivanGit/stochasticSim
 cd stochasticSim
