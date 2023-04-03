@@ -2,7 +2,7 @@
 date
 
 # Generate phased normal and pre-tumour BAMs
-../../../stochasticSimFramework/stochasticSim-1.0/bin/generatePhasedBams.bash \
+${GENERATEPHASEDBAMS_BASH} \
                 ../../Reference/X1_HG00110.ucsc_coding_exons_hg38.fa \
                 ../../Reference/X2_HG00110.ucsc_coding_exons_hg38.fa \
                 76 \
