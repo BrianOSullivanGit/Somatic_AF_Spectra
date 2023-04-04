@@ -1,6 +1,6 @@
 #!/usr/bin/Rscript
 
-# Make a dir where we will put out output.
+# Make a dir where we will put output.
 dir.create("output")
 
 # Somatic allele frequency spectra relevant to simulations referenced in paper,
