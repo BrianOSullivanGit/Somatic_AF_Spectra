@@ -10,7 +10,7 @@
 #  
 # Call the set of R scripts for this simulation set.
 printf "Creating required somatic allele frequency spectra...."
-mkdir output
+
 ./createSomaticDistributionCfgs.R
 printf "done.\n"
 
