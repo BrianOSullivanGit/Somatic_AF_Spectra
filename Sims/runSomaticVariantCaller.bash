@@ -61,5 +61,6 @@ java -Xmx16g -jar ${LATEST_MUTECT_JAR} \
                               ../../../../Reference/liftover_X1_HG00110.condense.txt \
                               ../../../../Reference/liftover_X2_HG00110.condense.txt \
                               ${3} \
-                              ${4} 2>&1 | tee summary.txt
+                              ${4} \
+                              ../../../../Reference/HG00110.vcf 2>&1 | tee summary.txt
 echo "done."
