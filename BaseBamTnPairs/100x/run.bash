@@ -6,7 +6,7 @@ ${GENERATEPHASEDBAMS_BASH} \
                 ../../Reference/X1_HG00110.ucsc_coding_exons_hg38.fa \
                 ../../Reference/X2_HG00110.ucsc_coding_exons_hg38.fa \
                 76 \
-                71500000 \
+                "-c 71500000" \
                 180 \
                 "50x_76bp"
 
