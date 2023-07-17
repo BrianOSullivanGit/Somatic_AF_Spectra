@@ -24,9 +24,12 @@ tar xvf Somatic_AF_Spectra.output.tgz
 
 ## Set up framework and reference files.
 
-### Clone the Somatic_AF_Spectra repository
+### Clone / download the latest Somatic_AF_Spectra repository
 
 ```
+wget https://github.com/BrianOSullivanGit/Somatic_AF_Spectra/archive/refs/tags/V1.0.0.tar.gz
+tar zxvf V1.0.0.tar.gz
+# or
 git clone  https://github.com/BrianOSullivanGit/Somatic_AF_Spectra
 ```
 
@@ -37,8 +40,9 @@ Enter the Somatic_AF_Spectra/FRAMEWORK directory. Clone and build the stochastic
 ```
 mkdir Somatic_AF_Spectra/FRAMEWORK
 cd Somatic_AF_Spectra/FRAMEWORK
-git clone https://github.com/BrianOSullivanGit/stochasticSim
-cd stochasticSim
+wget https://github.com/BrianOSullivanGit/stochasticSim/archive/refs/tags/V1.0.0.tar.gz
+tar zxvf V1.0.0.tar.gz
+cd stochasticSim-1.0.0
 # Run the install script.
 ./install.bash
 ```
